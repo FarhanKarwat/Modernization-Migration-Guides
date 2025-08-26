@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modernization & Migration Guides</title>
+  <style>
+    body { font-family: system-ui, Segoe UI, Roboto, Arial, sans-serif; max-width: 960px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { margin-bottom: .25rem; }
+    .muted { color: #666; }
+    ul { line-height: 1.9; }
+    code { background: #f5f5f5; padding: .1rem .3rem; border-radius: .25rem; }
+    .card { border: 1px solid #e5e5e5; border-radius: .75rem; padding: 1rem; margin: 1rem 0; }
+    .stack { display: grid; gap: .5rem; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  </style>
+</head>
+<body>
+  <h1>Modernization & Migration Guides</h1>
+  <div class="muted">Web Forms → .NET 8 API + SPA (Angular)</div>
+
+  <div class="card">
+    <h2>Quick Links</h2>
+    <ul>
+      <li><a href="./Docs/Migration-Playbook.md">Docs: Migration Playbook</a></li>
+      <li><a href="./Docs/WebForms-to-Core-Mapping.md">Docs: WebForms → Core Mapping</a></li>
+      <li><a href="./Docs/Checklist.md">Docs: Modernization Checklist</a></li>
+      <li>API Swagger (dev): <a href="http://localhost:5178/swagger">http://localhost:5178/swagger</a></li>
+      <li>API Swagger (Docker, port 8080): <a href="http://localhost:8080/swagger">http://localhost:8080/swagger</a></li>
+      <li>Minimal Frontend: open <code>FrontendMinimal/</code> via a static server</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Run API Locally</h2>
+    <pre class="mono">cd ModernizedApi
+dotnet run
+# API on http://localhost:5178</pre>
+  </div>
+
+  <div class="card">
+    <h2>Run API with Docker</h2>
+    <div class="stack">
+      <div>Build:</div>
+      <pre class="mono">cd ModernizedApi
+docker build -t modernized-api:latest .</pre>
+      <div>Run:</div>
+      <pre class="mono">docker run --rm -p 8080:8080 modernized-api:latest
+# API on http://localhost:8080</pre>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Serve Minimal Frontend</h2>
+    <pre class="mono">cd FrontendMinimal
+python -m http.server 5500
+# Open http://localhost:5500/FrontendMinimal/</pre>
+  </div>
+</body>
+</html>
