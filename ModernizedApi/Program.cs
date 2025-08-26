@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // CORS for local Angular dev
 builder.Services.AddCors(o => o.AddDefaultPolicy(p =>
-    p.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200")));
+    p.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod()))  // Demo only: AllowAnyOrigin for local static servers);
 
 // EF Core InMemory for demo
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("DemoDb"));

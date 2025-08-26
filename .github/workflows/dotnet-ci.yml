@@ -1,0 +1,33 @@
+name: .NET API CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.x'
+
+      - name: Restore
+        run: dotnet restore ModernizedApi/ModernizedApi.csproj
+
+      - name: Build
+        run: dotnet build ModernizedApi/ModernizedApi.csproj --configuration Release --no-restore
+
+      - name: Test (none yet)
+        run: echo "No tests yet" && exit 0
+
+      - name: Lint Markdown (Docs)
+        uses: avto-dev/markdown-lint@v1
+        with:
+          args: 'Docs/**/*.md README.md'
